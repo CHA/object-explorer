@@ -1,0 +1,29 @@
+<ng-container *ngIf="isSimpleType(content)">
+    {{content}}
+</ng-container>
+<ng-container *ngIf="isObject(content)">
+    <button (click)="toggleShowObject()">+ Object</button>
+    <ng-container *ngIf="isShowObject">
+        <cha-object-explorer [object]="content"></cha-object-explorer>
+    </ng-container>
+</ng-container>
+<ng-container *ngIf="isArray(content) && content.length > 0">
+    <button (click)="toggleShowArray()">+ Array ({{content.length}})</button>
+    <ng-container *ngIf="isShowArray">
+        <table *ngIf="isObject(content[0])">
+            <tr>
+                <td *ngFor="let field of getFields(content[0])">{{field}}</td>
+            </tr>
+            <tr *ngFor="let item of content">
+                <td *ngFor="let field of getFields(item)">
+                    <cha-cell [content]="item[field]"></cha-cell>
+                </td>
+            </tr>
+        </table>
+        <ul *ngIf="isSimpleType(content[0])">
+            <li *ngFor="let item of content">
+                {{item}}
+            </li>
+        </ul>
+    </ng-container>
+</ng-container>

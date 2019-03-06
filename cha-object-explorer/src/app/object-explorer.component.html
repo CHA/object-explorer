@@ -1,0 +1,8 @@
+<table class="table table-sm table-bordered">
+    <tr *ngFor="let field of fields">
+        <td valign="top">{{field}}</td>
+        <td>
+            <cha-cell [content]="object[field]"></cha-cell>
+        </td>
+    </tr>
+</table>
