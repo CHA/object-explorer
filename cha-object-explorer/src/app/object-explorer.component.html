@@ -1,8 +1,15 @@
-<table class="table table-sm table-bordered">
-    <tr *ngFor="let field of fields">
-        <td valign="top">{{field}}</td>
-        <td>
-            <cha-cell [content]="object[field]"></cha-cell>
-        </td>
-    </tr>
-</table>
+<div>
+    <ul class="tree" *ngFor="let field of fields">
+        <li>
+            <table class="table table-sm">
+                <tr style="width: 100%">
+                    <td style="width: 20%; vertical-align: top"> {{field}}</td>
+                    <td style="width: 80%">
+                        <cha-cell [content]=" object[field]">
+                        </cha-cell>
+                    </td>
+                </tr>
+            </table>
+        </li>
+    </ul>
+</div>
